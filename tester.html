@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+var userGuess = event.key;
+
+function alphanumeric(userGuess)  
+{   
+var letters = /^[a-zA-Z]+$/;  
+if(userGuess.value.match(letters))  
+{  
+alert('Your registration number have accepted : you can try another');  
+ 
+}  
+else  
+{  
+alert('Please input alphanumeric characters only');  
+ 
+}  
+}  
+
+
+    </script>
+</body>
+
+</html>

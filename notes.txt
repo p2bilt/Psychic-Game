@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/38620152/pick-a-random-letter-from-string-in-javascript
+

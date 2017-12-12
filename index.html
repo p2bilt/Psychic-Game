@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Psychic Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>PSYCHIC GAME</h1>
+    <h2>press a letter on the keyboard to guess the letter 
+        hidden in my digital brain</h2>
+    <div id="game">
+        <p>Psychic Wins: 0</p>
+        <p>Pathetic Series of Blunders: 0</p>
+        <p>Number of guessCount left: 10</p>
+        <p id="guesslistout">Your guessCount so far: </p>
+    </div>
+    <script>
+    // our precious variables.
+    var psychicString = "";
+    var alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+    var wins = 0;
+    var losses = 0;
+    var guessCount = 10;
+            var guessList = new Array();
+        var guessListStr = "";
+
+    // Randomly chooses a choice from the alphabet. This is the Computer's guess.
+
+    function getRandomLetter() {
+        return alphabet[Math.floor(Math.random() * alphabet.length)];
+    }
+
+    psychicString = getRandomLetter();
+
+    console.log(psychicString);
+
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
+
+        // Determines which key was pressed.
+        var userGuess = event.key;
+
+
+        if (guessCount > 1) {
+
+            if (userGuess === psychicString) {
+                wins++;
+                alert("WHOA you guessed it! You must be PSYCHIC!");
+                alert("Let's try this once more, big shot — I have a new letter, you guess again!");
+                psychicString = getRandomLetter();
+            console.log(psychicString);
+            userGuess = "";
+            guessCount = 10;
+
+            } else {
+                guessCount--;
+                guessList.push(" " + userGuess);
+            }
+
+        } else {
+            alert("Ugh, why not try again, you mucked that one up.");
+            psychicString = getRandomLetter();
+            console.log(psychicString);
+            losses++;
+            userGuess = "";
+            guessCount = 10;
+
+
+        }
+
+
+    // guessListStr += guessList.toString();
+
+        var html =
+            "<p>Psychic Wins: " + wins + "</p>" +
+            "<p>Pathetic Series of Blunders: " + losses + "</p>" +
+            "<p>Number of guessCount left: " + guessCount + "</p>" +
+            "Your guessCount so far: " + guessList + "</p>";
+
+        document.querySelector("#game").innerHTML = html;
+
+    };
+
+    </script>
+</body>
+
+</html>
