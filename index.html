@@ -4,20 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Psychic Game</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <!-- Added a link to Bootstrap-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.2/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-2Z7/vC4qa8c+Ie2wHTTl23UC/WUQvArGcavaBvCBwEfbQFA/NiQ7jp30yzfsa5+p" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1>PSYCHIC GAME</h1>
-    <h2>press a letter on the keyboard to guess the letter 
-        hidden in my digital brain</h2>
-    <div id="game">
-        <p>Psychic Wins: 0</p>
-        <p>Pathetic Series of Blunders: 0</p>
-        <p>Number of guessCount left: 10</p>
-        <p id="guesslistout">Your guessCount so far: </p>
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h1 class="display-3">PSYCHIC GAME</h1>
+                <p class="lead">press a letter on the keyboard to guess the letter hidden in my digital brain</p>
+            </div>
+            <div id="game">
+                <p>Psychic Wins: 0</p>
+                <p>Pathetic Series of Blunders: 0</p>
+                <p>Number of guessCount left: 10</p>
+                <p id="guesslistout">Your guessCount so far: </p>
+            </div>
+        </div>
     </div>
     <script>
     // our precious variables.
@@ -27,8 +33,8 @@
     var wins = 0;
     var losses = 0;
     var guessCount = 10;
-            var guessList = new Array();
-        var guessListStr = "";
+    var guessList = new Array();
+    var guessListStr = "";
 
     // Randomly chooses a choice from the alphabet. This is the Computer's guess.
 
@@ -54,9 +60,9 @@
                 alert("WHOA you guessed it! You must be PSYCHIC!");
                 alert("Let's try this once more, big shot — I have a new letter, you guess again!");
                 psychicString = getRandomLetter();
-            console.log(psychicString);
-            userGuess = "";
-            guessCount = 10;
+                console.log(psychicString);
+                guessList = [];
+                guessCount = 10;
 
             } else {
                 guessCount--;
@@ -64,18 +70,18 @@
             }
 
         } else {
-            alert("Ugh, why not try again, you mucked that one up.");
+            alert("Ugh, you mucked that one up. Why not try again?");
             psychicString = getRandomLetter();
             console.log(psychicString);
             losses++;
-            userGuess = "";
+            guessList = [];
             guessCount = 10;
 
 
         }
 
 
-    // guessListStr += guessList.toString();
+        // guessListStr += guessList.toString();
 
         var html =
             "<p>Psychic Wins: " + wins + "</p>" +
